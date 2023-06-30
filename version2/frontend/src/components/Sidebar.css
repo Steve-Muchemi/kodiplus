@@ -1,0 +1,59 @@
+.sidebar {
+    width: 80%;
+    margin: 0 auto;
+    background-color: aliceblue;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    overflow: hidden;
+    height: 49px;
+  }
+  
+  .city-data {
+    flex: 1;
+    padding: 10px;
+    background: linear-gradient(to right, #c6f2fd, #fdfdfd);
+    display: flex;
+    align-items: center;
+    
+  }
+  
+  .city-data ul {
+    list-style: none;
+    margin: 0;
+    padding-right: 10px;
+    display: flex;
+    gap: 140px;
+  }
+  
+  .city-data li {
+    background-color: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 5px 10px;
+  }
+  
+  .city-data li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .content {
+    flex: 1;
+    
+  
+    background: linear-gradient(to left, #7fc8fc, #f8f9fa);
+
+  }
+  
+  .content h3 {
+    margin: 0;
+  }
+  
+  .content:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  .challenges {
+    padding:14px;
+    
+  }
