@@ -1,0 +1,16 @@
+{
+  "name": "version2",
+  "version": "1.0.0",
+  "description": "This is the second version of KodPlus! More features added incuding:\r - fixed the css grid\r - Improved the property description in the modal\r - Added a Map\r - login\r - Property posting",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
