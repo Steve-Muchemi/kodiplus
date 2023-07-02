@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-
+ const PORT = process.env.PORT || 3000
 app.use(express.json());
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -11,9 +11,9 @@ app.use(function(req, res, next) {
   });
 
  
-
-
-const connectDB = async () => {
+ 
+  
+  const connectDB = async () => {
     try {
       const conn = await mongoose.connect(process.env.MONGO_URI);
       console.log(`MongoDB Connected: ${conn.connection.host}`);
@@ -22,13 +22,15 @@ const connectDB = async () => {
       process.exit(1);
     }
   }
-
+  
+  //Routes go here
+  app.all('*', (req,res) => {
+      res.json({"every thing":"is awesome"})
+  })
+  
+  //Connect to the database before listening
   connectDB().then(() => {
-app.listen(3001, ()=>{
-    console.log('Server is running on port 3001');
-});
-})
-
-const apiRoutes = require('./routes/api');
-
-app.use('/api', apiRoutes)
+      app.listen(PORT, () => {
+          console.log("listening for requests");
+      })
+  })
