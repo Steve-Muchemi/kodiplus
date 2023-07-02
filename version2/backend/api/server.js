@@ -10,8 +10,9 @@ app.use(function(req, res, next) {
     next();
   });
 
+const mongoURI = process.env.MONGODB_URI 
 
-mongoose.connect('mongodb://127.0.0.1:27017', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(mongoURI, {useNewUrlParser: true, useUnifiedTopology: true})
 .then(()=> {
 console.log('connected to MongoDB');
 })
