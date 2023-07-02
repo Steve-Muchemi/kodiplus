@@ -5,6 +5,7 @@ const baseModel = require('../models/baseModel');
 
 router.get('/properties', async(req, res)=>{
 try{
+    console.log("executing this");
     const properties = await baseModel.find();
     res.json(properties);
 } catch (error) {
