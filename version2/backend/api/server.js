@@ -24,9 +24,11 @@ app.use(function(req, res, next) {
   }
   
   //Routes go here
-  app.all('*', (req,res) => {
-      res.json({"every thing":"is awesome"})
-  })
+  //app.all('*', (req,res) => {
+  //    res.json({"every thing":"is awesome"})
+  //})
+const apiRoutes = require('./routes/api');
+  app.use('/api', apiRoutes);
   
   //Connect to the database before listening
   connectDB().then(() => {
