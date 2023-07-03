@@ -11,14 +11,14 @@ app.use(function(req, res, next) {
   });
 
  
- const uri = "mongodb+srv://stewie-gil:777Stephen!@cluster0.ez5jfzu.mongodb.net/?retryWrites=true&w=majority";
+ 
   
   const connectDB = async () => {
     try {
-      const conn = await mongoose.connect(uri);
+      const conn = await mongoose.connect(process.env.MONGO_URI);
       console.log(`MongoDB Connected: ${conn.connection.host}`);
     } catch (error) {
-      console.log("error from mongo connection",error);
+      console.log(error);
       process.exit(1);
     }
   }
