@@ -12,9 +12,11 @@ app.use(function(req, res, next) {
   next();
 });
 
+const uri = "mongodb+srv://stewie-gil:777Stephen!@cluster0.ez5jfzu.mongodb.net/?retryWrites=true&w=majority";
+
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URI);
+    const conn = await mongoose.connect(uri);
     console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
     console.log(error);
@@ -25,10 +27,15 @@ const connectDB = async () => {
 const apiRoutes = require('./routes/api');
 app.use('/api', apiRoutes);
 
-app.use(express.static(path.join(__dirname, "../../frontend/build")));
+app.use(express.static(path.join(__dirname, "./frontend/build")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../../frontend/build", "index.html"));
+  res.sendFile(path.join(__dirname, "./frontend/build/index.html"), 
+  function (err) {
+    res.status(500).send(err);
+  }
+  
+  );
 });
 
 //Connect to the database before listening
