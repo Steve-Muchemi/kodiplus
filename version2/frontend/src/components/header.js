@@ -13,7 +13,7 @@ return (
     <nav className= {styles.navbar}>
         <img src={kodiplus_logo} alt={"kodiplus_logo"} className = {styles.logo}/>
         <ul>
-            <li> About </li>
+            <li> About  </li>
             <li>Contact</li>
             {/* <LoginForm className={styles.PostData}/> */}
             <PostData className={styles.PostData}/>
