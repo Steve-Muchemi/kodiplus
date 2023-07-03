@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
- const PORT = process.env.PORT || 3000
+ const PORT = 3000
 app.use(express.json());
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -18,7 +18,7 @@ app.use(function(req, res, next) {
       const conn = await mongoose.connect(uri);
       console.log(`MongoDB Connected: ${conn.connection.host}`);
     } catch (error) {
-      console.log(error);
+      console.log("error from mongo connection",error);
       process.exit(1);
     }
   }
