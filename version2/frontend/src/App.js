@@ -17,7 +17,7 @@ const [searchQuery, setSearchQuery] = useState('');
 const [searchListings, setSearchListings] = useState([]);
 
 useEffect(() => {
-    axios.get('http://localhost:3001/api/properties')
+    axios.get('/api/properties')
         .then(response => {
          const dbData = response.data;
          setlistings(dbData)
@@ -34,7 +34,7 @@ useEffect(() => {
 const handleSearch = async(searchQuery) => {
 try {
 
-    const response = await axios.get(`http://localhost:3001/api/properties/${searchQuery}`);
+    const response = await axios.get(`/api/properties/${searchQuery}`);
     const filteredListings = response.data;
     setSearchListings(filteredListings);
  
