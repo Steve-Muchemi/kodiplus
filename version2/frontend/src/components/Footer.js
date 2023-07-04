@@ -11,7 +11,6 @@ function Footer() {
       <ul>
         <li>About Company</li>
         <li>Team</li>
-        <li>Careers</li>
         <li>Partnerships</li>
       </ul>
     </div>
@@ -41,7 +40,7 @@ function Footer() {
     </div>
   </div>
   <div className={styles["footer-bottom"]}>
-    <p>&copy; 2023 Your Website. All rights reserved.</p>
+    <p>&copy; 2023 KodiPlus. All rights reserved.</p>
   </div>
 
 </footer>

@@ -140,13 +140,13 @@ onClick={() => openModal(listing)}
     <div className={styles.ModalMap}>
       <p>Map</p>
            
-            <MapContainer center={position} zoom={13} >
+            {/* <MapContainer center={position} zoom={13} >
             <TileLayer
   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
   attribution="Map data © OpenStreetMap contributors"
 />
       <Marker position={position} />
-    </MapContainer>
+    </MapContainer> */}
 
                       
     </div>
