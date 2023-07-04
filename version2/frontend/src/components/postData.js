@@ -42,7 +42,7 @@ location, amenities, contactInfo, imageUrls} = formData;
 console.log('formData', formData);
 console.log('property name', propertyName);
 
-axios.post('http://localhost:3001/api/properties', formData)
+axios.post('/api/properties', formData)
 .then (response=> {
     console.log('data submitted successfully', response.data);
 })
