@@ -1,3 +1,4 @@
+// Our database Schema
 const mongoose = require('mongoose');
 const baseModelSchema = new mongoose.Schema({
 
