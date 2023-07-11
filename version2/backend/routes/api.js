@@ -1,11 +1,13 @@
+//This file contains all our routes to the api
+
 const express = require('express');
 const router = express.Router();
 const baseModel = require('../models/baseModel');
+const Fuse = require('fuse.js');
 
-
+//get all properties
 router.get('/properties', async(req, res)=>{
 try{
-    console.log("executing this");
     const properties = await baseModel.find();
     res.json(properties);
 } catch (error) {
@@ -13,6 +15,7 @@ try{
 }
 })
 
+//add a new property
 router.post('/properties', async(req, res)=>{
 try{
     const newProperty = req.body;
@@ -23,6 +26,7 @@ res.status(500).json({error: "Failed to post, server error"})
 }
 });
 
+//update an existing property
 router.put('/properties/:id', async(req, res)=>{
     try{
         const updatedProperty = await baseModel.findByIdAndUpdate(
@@ -39,6 +43,7 @@ router.put('/properties/:id', async(req, res)=>{
     }
 });
 
+//delete an existing property
 router.delete('/properties/:id', async(req, res)=>{
     try{
         const deletedProperty = await baseModel.findByIdAndDelete(req.params.id);
@@ -52,41 +57,36 @@ router.delete('/properties/:id', async(req, res)=>{
 
 });
 
-router.get('/properties/:searchquery', async(req, res) => {
-const searchQuery = req.params.searchquery;
-try{
-    const searchResults= await baseModel.find({propertyName: {$regex: searchQuery, $options: 'i'}});
-    res.json(searchResults);
-} catch (error){
-    console.error('Error searching properties', error);
-    res.status(500).json({error:'An error occured while searching properties'})
-}
 
-});
-
+//Queries the search query with a string 
 router.get('/properties/:searchquery', async (req, res) => {
     const searchQuery = req.params.searchquery;
     try {
-      const searchResults = await baseModel.find({
-        $or: [
-          { propertyName: { $regex: searchQuery, $options: 'i' } },
-          { location: { $regex: searchQuery, $options: 'i' } },
-          { description: { $regex: searchQuery, $options: 'i' } },
-          { amenities: { $regex: searchQuery, $options: 'i' } },
-        ],
-      });
-      res.json(searchResults);
+        const allproperties = await baseModel.find();
+        
+        const options = {
+            keys: ['propertyType', 'description', 'propertyName', 'location', 'amenities', 'price'],
+            includeScore: true,
+            threshold: 0.4,
+            tokenize: false,
+            matchAllTokens: true
+          };
+                    
+    
+        const fuse = new Fuse(allproperties, options);
+
+
+        const result = fuse.search(searchQuery).map((result) => result.item);
+        
+        res.json(result);
     } catch (error) {
       console.error('Error searching properties', error);
       res.status(500).json({ error: 'An error occurred while searching properties' });
     }
-  });
-  
-
-
-
+});
 
 
 module.exports = router;
+
 
 
