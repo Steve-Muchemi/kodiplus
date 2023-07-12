@@ -8,7 +8,7 @@ Kodiplus is a modern and user-friendly rental listings platform that aims to rev
 
 Check out the live demo of Kodiplus at [kodiplus.cyclic.app](https://kodiplus.cyclic.app).
 
-## Features
+## Features (full features coming soon)
 
 - **Advanced Search**: Quickly filter rental listings based on location, price range, number of bedrooms, and more.
 - **Favorites and Saved Searches**: Save your favorite listings and receive notifications for new properties that match your saved searches.
@@ -21,23 +21,21 @@ Check out the live demo of Kodiplus at [kodiplus.cyclic.app](https://kodiplus.cy
 
 ## Technologies Used
 
-- **Front-End**: HTML5, CSS3, JavaScript, React.js
+- **Front-End**: HTML5, CSS3, React.js
 - **Back-End**: Node.js, Express.js
 - **Database**: MongoDB
-- **Authentication**: JWT (JSON Web Tokens)
-- **API Integration**: Utilizes rental data providers or APIs like Zillow, Trulia, or Airbnb for up-to-date and accurate rental information.
+- **Authentication**: Firebase
 
 ## Contributing
 
-Contributions are welcome! If you find any bugs or have suggestions for new features, please open an issue or submit a pull request. See our [contribution guidelines](CONTRIBUTING.md) for more details.
-
+Contributions are welcome! If you find any bugs or have suggestions for new features, please open an issue or submit a pull request. 
 ## License
 
 Kodiplus is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
 
 ## Contact
 
-Have questions or feedback? Reach out to our team at support@kodiplus.com or visit our website [kodiplus.com](https://www.kodiplus.com) for more information.
+Have questions or feedback? Reach out to me at gilliganstewie@gmail.com.
 
 ---
 
