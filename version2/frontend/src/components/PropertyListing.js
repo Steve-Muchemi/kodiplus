@@ -111,10 +111,8 @@ function PropertyListing({ listings }) {
               <p>Email: {selectedImagePropertyContact[1]}</p>
             </div>
             <div className={styles.ModalUsercomments}>
-              <h3>What our users are saying...</h3>
-              <p>User comment 1</p>
-              <p>user comment 2</p>
-              <p>user comment 3</p>
+              <h3>More features coming :) </h3>
+             
             </div>
           </div>
         )}
