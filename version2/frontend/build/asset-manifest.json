@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.52a82304.css",
-    "main.js": "/static/js/main.12ab8fdc.js",
+    "main.js": "/static/js/main.c4cddaef.js",
     "static/js/787.cda612ba.chunk.js": "/static/js/787.cda612ba.chunk.js",
     "static/media/kodiplus_logo.png": "/static/media/kodiplus_logo.d92b4a6398a5a14b60d2.png",
     "index.html": "/index.html",
     "main.52a82304.css.map": "/static/css/main.52a82304.css.map",
-    "main.12ab8fdc.js.map": "/static/js/main.12ab8fdc.js.map",
+    "main.c4cddaef.js.map": "/static/js/main.c4cddaef.js.map",
     "787.cda612ba.chunk.js.map": "/static/js/787.cda612ba.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.52a82304.css",
-    "static/js/main.12ab8fdc.js"
+    "static/js/main.c4cddaef.js"
   ]
 }

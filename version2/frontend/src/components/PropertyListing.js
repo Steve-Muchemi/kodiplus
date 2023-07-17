@@ -73,7 +73,6 @@ function PropertyListing({ listings }) {
               <button className={styles.closeselected} onClick= {closeModal}> close </button>
             </div>
 
-            // modal to handle the images
             <Imageapp selected = {selectedImagePropertyUrl} />
 
 
