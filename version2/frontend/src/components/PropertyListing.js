@@ -69,14 +69,21 @@ function PropertyListing({ listings }) {
             <div className={styles.Modalheader}>
               <p className={styles.Modalheadertitle}>{selectedImagePropertyName}</p>
               <img className={styles.UserImage} src={selectedImagePropertyUrl} />
+              <button className={styles.closeselected} onClick= {closeModal}> close </button>
             </div>
-            <div className={styles.Modalimages}>
+
+            // modal to handle the images
+            <Imageapp selected = {selectedImagePropertyUrl} />
+
+
+            {/* <div className={styles.Modalimages}>
               <img src={selectedImagePropertyUrl} alt={selectedImage.title} className={styles.imagepop1} />
               <div className={styles.imagepopgroup}>
                 <img src={selectedImagePropertyUrl} alt={selectedImage.title} className={styles.imagepop2} />
                 <img src={selectedImagePropertyUrl} alt={selectedImage.title} className={styles.imagepop2} />
               </div>
             </div>
+             */}
             <div className={styles.ModalDescription}>
               <div className={styles.ModalDescriptionbox}>
                 <h3 className={styles.description}>Description</h3>
