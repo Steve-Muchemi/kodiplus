@@ -6,7 +6,7 @@ Kodiplus is a modern and user-friendly rental listings platform that aims to rev
 
 ## Live Demo
 
-Check out the live demo of Kodiplus at [kodiplus.cyclic.app](https://kodiplus.cyclic.app).
+Check out the live demo of Kodiplus at [kodip.cyclic.app](https://kodip.cyclic.app).
 
 ## Features (full features coming soon)
 
