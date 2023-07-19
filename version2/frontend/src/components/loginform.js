@@ -1,20 +1,30 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
-
+import firebase from 'firebase/app';
+import "firebase/auth";
+//import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut} from "firebase/auth";
+//import firebase from 'firebase/compat/app'; // Add this import
+//import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/compat/auth'; // Add this import
+//import { getFirestore } from 'firebase/compat/firestore'; // Add this import
 
 import styles from './loginform.module.css';
 
 // Initialize Firebase app
 const firebaseConfig = {
-  // Your Firebase config object goes here
+  apiKey: "AIzaSyD-KPygBA0nfwNoR7af9D1mRzuz0Ud2KYA",
+  authDomain: 'localhost',
+  projectId: 'kodiplus-1b34f'
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+const app = firebase.initializeApp(firebaseConfig);
+//const db = getFirestore(app);
+
+const auth = firebase.auth();
+const signInWithEmailAndPassword = firebase.auth().signInWithEmailAndPassword;
+const createUserWithEmailAndPassword = firebase.auth().createUserWithEmailAndPassword;
+const signOut = firebase.auth().signOut;
+
+
 
 function LoginForm() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -39,21 +49,22 @@ function LoginForm() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(email, password);
+      await signInWithEmailAndPassword(auth, email, password);
       console.log('Logged In');
       setLoggedIn(true);
       setName(name);
       setModalOpen(false); // Close the modal after successful login
     } catch (error) {
       console.log(error);
+      setloginerror(error.message);
     }
   };
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      await createUserWithEmailAndPassword(email, password);
-      const user = getAuth().currentUser;
+      await createUserWithEmailAndPassword(auth, email, password);
+      const user = auth.currentUser;
       console.log('Signed Up', name);
       setLoggedIn(true);
       setUserName(name);
@@ -61,16 +72,8 @@ function LoginForm() {
     } catch (error) {
       console.log(error);
 
-      const errorMessage = error.message;
-      const start = errorMessage.indexOf('The email address');
-      const end = errorMessage.indexOf('(auth/email-already-in-use)');
+      setloginerror(error.message);
 
-
-      if (start !== -1 && end !== -1) {
-        setloginerror(errorMessage.slice(start, end));
-      } else {
-        setloginerror('An error occurred during sign up.');
-      }
 
     }
   };
@@ -78,7 +81,7 @@ function LoginForm() {
   const handleLogout = async () => {
     try {
 
-      await getAuth().signOut();
+      await signOut(auth);
       setLoggedIn(false);
       console.log('Logged Out');
       setShowDropdown(true);
@@ -154,6 +157,10 @@ const toggleDropdownFalse = () =>
             />
             <button type="submit" className={styles.button} onClick = {toggleDropdownFalse}>Log in</button>
             <button onClick={() => setDisplayName(true)} className={styles.button}>Sign Up</button>
+          {loginerror && (
+  <p style={{ color: '#ff6b6b', fontStyle: 'italic', fontWeight: 'bold', padding : '0 px', margin: '4px 0' }}>{loginerror}</p>
+)}
+
           </form>
         )}
         {displayName && (
