@@ -2,14 +2,10 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import firebase from 'firebase/app';
 import "firebase/auth";
-//import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut} from "firebase/auth";
-//import firebase from 'firebase/compat/app'; // Add this import
-//import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/compat/auth'; // Add this import
-//import { getFirestore } from 'firebase/compat/firestore'; // Add this import
 
 import styles from './loginform.module.css';
 
-// Initialize Firebase app
+
 const firebaseConfig = {
   apiKey: "AIzaSyD-KPygBA0nfwNoR7af9D1mRzuz0Ud2KYA",
   authDomain: 'localhost',
@@ -17,7 +13,7 @@ const firebaseConfig = {
 };
 
 const app = firebase.initializeApp(firebaseConfig);
-//const db = getFirestore(app);
+
 
 const auth = firebase.auth();
 const signInWithEmailAndPassword = firebase.auth().signInWithEmailAndPassword;
@@ -49,7 +45,7 @@ function LoginForm() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(email, password);
       console.log('Logged In');
       setLoggedIn(true);
       setName(name);
@@ -63,7 +59,7 @@ function LoginForm() {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      await createUserWithEmailAndPassword(email, password);
       const user = auth.currentUser;
       console.log('Signed Up', name);
       setLoggedIn(true);
@@ -81,7 +77,7 @@ function LoginForm() {
   const handleLogout = async () => {
     try {
 
-      await signOut(auth);
+      await signOut();
       setLoggedIn(false);
       console.log('Logged Out');
       setShowDropdown(true);
