@@ -16,9 +16,7 @@ const app = firebase.initializeApp(firebaseConfig);
 
 
 const auth = firebase.auth();
-const signInWithEmailAndPassword = firebase.auth().signInWithEmailAndPassword;
-const createUserWithEmailAndPassword = firebase.auth().createUserWithEmailAndPassword;
-const signOut = firebase.auth().signOut;
+
 
 
 
@@ -45,7 +43,7 @@ function LoginForm() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(email, password);
+      await auth.signInWithEmailAndPassword(email, password);
       console.log('Logged In');
       setLoggedIn(true);
       setName(name);
@@ -59,7 +57,7 @@ function LoginForm() {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      await createUserWithEmailAndPassword(email, password);
+      await auth.createUserWithEmailAndPassword(email, password);
       const user = auth.currentUser;
       console.log('Signed Up', name);
       setLoggedIn(true);
@@ -77,7 +75,7 @@ function LoginForm() {
   const handleLogout = async () => {
     try {
 
-      await signOut();
+      await auth.signOut();
       setLoggedIn(false);
       console.log('Logged Out');
       setShowDropdown(true);
