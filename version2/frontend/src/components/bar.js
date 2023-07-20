@@ -2,8 +2,6 @@ import React from 'react';
 import './Sidebar.css';
 
 function Sidebar() {
-  const cities = ['RENT', 'BUY', 'SELL', 'VALUE']
-
   const handleCityClick = (city) => {
     console.log(`Clicked on ${city}`);
     // Handle the city click event
@@ -16,19 +14,12 @@ function Sidebar() {
 
   return (
     <div className="sidebar">
-      <div className="city-data">
-        <ul>
-          {cities.map((city) => (
-            <h3 key={city} onClick={() => handleCityClick(city)}>
-              {city}
-            </h3>
-          ))}
-        </ul>
-      </div>
-      <div className="content">
-        <h3 className="challenges"> SOCIAL</h3>
-        
-      </div>
+      <ul>
+        <li onClick={() => handleCityClick('Rent')}>Rent</li>
+        <li onClick={() => handleCityClick('BnB\'s')}>BnB's</li>
+        <li onClick={() => handleCityClick('Luxury')}>Luxury</li>
+        <li onClick={() => handleCityClick('Buy')}>Buy</li>
+      </ul>
     </div>
   );
 }
